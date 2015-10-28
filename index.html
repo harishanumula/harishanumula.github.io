@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>OASIS</title>
+		<link rel = "stylesheet" href = "bootstrap.css" />
+	</head>
+	<body>
+	<div class = "navbar navbar-static-top">
+    <a href = "/" class = "navbar-brand text-danger">OASIS</a>
+   
+    <div class = "container">
+        <div class = "collapse navbar-collapse harishcollapse">
+            <ul class = "nav navbar-nav navbar-left">
+                <li><a href = "/" >Home</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+	<div class = "container">
+		<div class = "jumbotron">
+		</div>
+	</div>
+
+	<script src = "jquery.js"></script>
+	<script src = "bootstrap.js"></script>
+	<script>
+		$(document).ready(function() {
+    // Handler for .ready() called.
+
+    $.ajax({
+        url: "https://api.twitter.com/1.1/search/tweets.json?q=%23freebandnames",
+        type: "GET",
+        dataType: 'json',
+
+        success: function(data) { alert(data); console.log(data);},
+        error: function(html) { alert(html); },
+        beforeSend: setHeader
+    });
+
+//fds5B6mRmWCri66Kx4OdLHcT5rquEoVbBDJtUfqLG21FiXfEYP&jJNUle4TuAAOX0aeKFbGVxmvXsCwPHNfNhu6b06ElcjkL
+    function setHeader(xhr) {
+        if(xhr && xhr.overrideMimeType) {
+            xhr.overrideMimeType("application/j-son;charset=UTF-8");
+        }
+        xhr.setRequestHeader('Authorization','OAuth oauth_consumer_key="4f9DJQcF7HQCEfdIhpKRvHEmn", oauth_nonce="dc948802afdb49a480480244a82be3b5", oauth_signature="hnSKKQBhNOb2lMW9RyrHquUMUFw%3D", oauth_signature_method="HMAC-SHA1", oauth_timestamp="1446059154", oauth_token="3269616192-pnjQF681wZgCcNIiGHBlk30RmAvkCjzz6JevpSx", oauth_version="1.0"');
+    }
+
+});
+	</script>
+	</body>
+</html>
